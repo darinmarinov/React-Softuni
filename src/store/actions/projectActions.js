@@ -1,6 +1,17 @@
 export const createrProject = (project) =>{
-    return(dispatch, getState) =>{
+    return(dispatch, getState, { getFirebase, getFirestore }) =>{
         // TODO: Set types and bindActionCreators
-        dispatch({type:'CREATE_PROJECT', project})
+        const firestore = getFirestore();
+        firestore.collection('projects').add({
+          ...project,
+          authorFirstName: 'ned',
+          authorLastName: 'nikoi',
+          authorId: 1213,
+          createdAt: new Date()
+        }).then(() =>{
+          dispatch({type:'CREATE_PROJECT', project})
+        }).catch((err)=>{
+          dispatch({type:'CREATE_PROJECT_ERROR', err})
+        })
       }
 }
