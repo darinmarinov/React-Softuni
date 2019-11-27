@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux' 
+import { signIn } from '../../store/actions/authActions'
 
 class SignIn extends Component {
     constructor(props) {
@@ -19,10 +21,11 @@ class SignIn extends Component {
 
     onSubmitForm = (e) => {
         e.preventDefault();
-        console.log(this.state)
+        this.props.signIn(this.state)
     }
 
     render() {
+        const {authError} = this.props;
         return (
             <React.Fragment>
             <div className="title">
@@ -50,6 +53,9 @@ class SignIn extends Component {
                                 </div>
                                 <div className="row center-align">
                                     <button className="btn waves-effect waves-light" type="submit" name="action">Login <i className="material-icons right">send</i> </button>
+                                    <div className="red-text center">
+                                             {authError ? <p>{authError}</p>: null }
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -61,4 +67,16 @@ class SignIn extends Component {
     }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+    return{
+        authError: state.auth.authError
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return{
+        signIn : (creds) => dispatch(signIn(creds))
+    }
+} 
+
+export default connect(mapStateToProps,mapDispatchToProps)(SignIn)
