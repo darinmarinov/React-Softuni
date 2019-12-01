@@ -13,7 +13,7 @@ export class Dashboard extends React.Component{
         
         const {projects, auth} = this.props
 
-        if(!auth.uid) return <Redirect to="/signin"/>
+        if(!auth.uid) return <Redirect to="/signIn"/>
          
         return(
             <div className='dashboard container'>
