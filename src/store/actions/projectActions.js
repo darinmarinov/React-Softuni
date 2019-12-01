@@ -2,11 +2,13 @@ export const createrProject = (project) =>{
     return(dispatch, getState, { getFirebase, getFirestore }) =>{
         // TODO: Set types and bindActionCreators
         const firestore = getFirestore();
+        const profile = getState().firebase.profile;
+        const authorId = getState().firebase.auth.uid;
         firestore.collection('projects').add({
           ...project,
-          authorFirstName: 'ned',
-          authorLastName: 'nikoi',
-          authorId: 1213,
+          authorFirstName: profile.firstName,
+          authorLastName: profile.lastName,
+          authorId: authorId,
           createdAt: new Date()
         }).then(() =>{
           dispatch({type:'CREATE_PROJECT', project})

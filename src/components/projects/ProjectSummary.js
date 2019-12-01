@@ -9,7 +9,7 @@ const ProjectSummary = ({project}) => {
                         <p>{project.content}</p>
                 </div>
                 <div className="card-action">
-                    <a href="#">This is a link</a>
+    <p>Posted by:{project.authorFirstName} {project.authorLastName}</p>
                     <a href="#">This is a link</a>
                 </div>
             </div>
