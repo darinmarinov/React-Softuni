@@ -18,6 +18,9 @@ export class Dashboard extends React.Component{
         return(
             <div className='dashboard container'>
                 <div className='row'>
+                    <div className="col s12 m8">
+                    <h2>Projects:</h2>
+                    </div>
                     <div className='col s12 m8'>
                       <ProjectLists projects={projects}></ProjectLists>
                     </div>
