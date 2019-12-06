@@ -7,7 +7,7 @@ const ProjectLists = ({projects}) => {
         <div className="row project-lists">
            { projects && projects.map(project=>{
               return(
-                <Link to={'project/'+project.id} key={project.id}>
+                <Link to={'project/'+project.id} key={project.id} title="More Info"> 
                   <ProjectSummary project={project}  />
                 </Link>
               )

@@ -17,3 +17,15 @@ export const createrProject = (project) =>{
         })
       }
 }
+
+export const deleteProject = (project) =>{
+  return(dispatch, getState, { getFirebase, getFirestore }) =>{
+      // TODO: Set types and bindActionCreators
+      const firestore = getFirestore();
+      firestore.collection('projects').doc(project).delete().then(() =>{
+        dispatch({type:'DELETE_PROJECT'})
+      }).catch((err)=>{
+        dispatch({type:'CREATE_PROJECT_ERROR', err})
+      })
+    }
+}
