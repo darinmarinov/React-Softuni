@@ -12,51 +12,43 @@ class SignUp extends Component {
             lastName: '',
             email: '',
             password: '',
-            fields: {},
-            errors: {}
+            errors: []
         }
 
     }
 
-    handleValidation() {
-        let fields = this.state.fields;
-        let errors = {};
-        let formIsValid = true;
-
-        //Name
-        if (!fields["name"]) {
-            formIsValid = false;
-            errors["name"] = "Cannot be empty";
-        }
-
-        if (typeof fields["name"] !== "undefined") {
-            if (!fields["name"].match(/^[a-zA-Z]+$/)) {
-                formIsValid = false;
-                errors["name"] = "Only letters";
-            }
-        }
-
-        //Email
-        if (!fields["email"]) {
-            formIsValid = false;
-            errors["email"] = "Cannot be empty";
-        }
-
-        if (typeof fields["email"] !== "undefined") {
-            let lastAtPos = fields["email"].lastIndexOf('@');
-            let lastDotPos = fields["email"].lastIndexOf('.');
-
-            if (!(lastAtPos < lastDotPos && lastAtPos > 0 && fields["email"].indexOf('@@') == -1 && lastDotPos > 2 && (fields["email"].length - lastDotPos) > 2)) {
-                formIsValid = false;
-                errors["email"] = "Email is not valid";
-            }
-        }
-
-        this.setState({ errors: errors });
-        return formIsValid;
+    errorClass = () => {
+        return (this.state.errors.length === 0 ? '' : 'c-error c-validation');
     }
 
-    onChangeInput = (e) => {     
+    validate = (firstName, lastName, email, password) => {
+        const errors = this.state.errors;
+        if (firstName.length === 0) {
+            errors.push("First Name can't be empty");
+        }
+
+        if (lastName.length === 0) {
+            errors.push("Last Name can't be empty");
+        }
+
+        if (email.length < 5) {
+            errors.push("Email should be at least 5 charcters long");
+        }
+        if (email.split("").filter(x => x === "@").length !== 1) {
+            errors.push("Email should contain a @");
+        }
+        if (email.indexOf(".") === -1) {
+            errors.push("Email should contain at least one dot");
+        }
+
+        if (password.length < 6) {
+            errors.push("Password should be at least 6 characters long");
+        }
+
+        return errors;
+    }
+
+    onChangeInput = (e) => {
         this.setState({
             [e.target.id]: e.target.value,
         })
@@ -64,12 +56,16 @@ class SignUp extends Component {
 
     onSubmitForm = (e) => {
         e.preventDefault();
+        const { firstName, lastName, email, password } = this.state;
 
-        if(!this.handleValidation()){
-            this.props.signUp(this.state)
-         }else{
-            alert("Form has errors.")
-         }
+        const errors = this.validate(firstName, lastName, email, password);
+
+        if (errors.length > 0) {
+            this.setState({ errors });
+            return;
+        }
+
+        this.props.signUp(this.state)
     }
 
     render() {
@@ -92,15 +88,15 @@ class SignUp extends Component {
                                             <i className="material-icons prefix">email</i>
                                             <input type="text" placeholder='' id="firstName" className="validate" onChange={this.onChangeInput} />
                                             <label htmlFor="firstName">First Name:</label>
-                                            <span style={{color: "red"}}>{this.state.errors["name"]}</span>
+                                            <span style={{ color: "red" }}>{this.state.errors["name"]}</span>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="input-field col s12">
                                             <i className="material-icons prefix">email</i>
                                             <input type="text" placeholder='' id="lastName" className="validate" onChange={this.onChangeInput} />
-                                            <label htmlFor="lastName">Last Name</label>                                         
-                                            <span style={{color: "red"}}>{this.state.errors["name"]}</span>
+                                            <label htmlFor="lastName">Last Name</label>
+                                            <span style={{ color: "red" }}>{this.state.errors["name"]}</span>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -108,7 +104,7 @@ class SignUp extends Component {
                                             <i className="material-icons prefix">email</i>
                                             <input type="email" placeholder='' id="email" className="validate" onChange={this.onChangeInput} />
                                             <label htmlFor="email">Email</label>
-                                            <span style={{color: "red"}}>{this.state.errors["email"]}</span>
+                                            <span style={{ color: "red" }}>{this.state.errors["email"]}</span>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -121,10 +117,17 @@ class SignUp extends Component {
                                     <div className="row center-align">
                                         <button className="btn waves-effect waves-light" type="submit" name="action">Register <i className="material-icons right">send</i> </button>
                                     </div>
-                                    <div>
+                                    <div className={`${this.errorClass()} error`}>
+                                        {this.state.errors.map(error => (
+                                            <p key={error}>Error: {error}</p>
+                                        ))}
+                                    </div>
+                                    <div className="text-center">
+                                        <b>
                                         {
                                             authError ? <p>{authError}</p> : null
                                         }
+                                        </b>
                                     </div>
                                 </form>
                             </div>
