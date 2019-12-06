@@ -127,3 +127,31 @@ nav .brand-logo{margin: 0 30px;}
 }
 
 .btn.waves-effect.waves-light i{font-size: 1.6rem;}
+
+.error{
+  height: 0;
+  -webkit-transition:all 1s ease;
+  -moz-transition:all 1s ease;
+   -ms-transition:all 1s ease;
+    -o-transition:all 1s ease;
+       transition:all 1s ease;
+}
+
+.error.c-validation{
+  display: block !important;
+  background: #c51244 !important;
+  padding: 10px !important;
+  border-radius: 0 !important;
+  position: relative; 
+  height: 100%;
+  box-shadow: 1px 1px 1px #aaaaaa;
+  margin: 0 auto 20px !important;
+  color:#fff;
+  text-align: center;
+  font-weight: 700;
+}
+
+.btn.waves-effect.waves-light{
+  margin: 0 auto;
+  width: 100%;
+  max-width: 500px;}

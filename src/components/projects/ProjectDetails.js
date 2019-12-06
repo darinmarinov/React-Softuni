@@ -16,7 +16,7 @@ const ProjectDetails = (props) => {
                   <span className="card-title">{project.title}</span>
                     <p>{project.content}</p>
                 </div>
-                <div className='card-action cyan darken-3'>
+                <div className='card-action'>
                     <div><span>Posted by</span> {project.authorFirstName}{project.authorLastName}</div>
                     <div>{moment(project.createdAt.toDate()).calendar()}</div>
                 </div>

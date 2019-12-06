@@ -9,9 +9,27 @@ class CreateProject extends Component {
 
         this.state = {
             title: '',
-            content: ''
+            content: '',
+            errors: [],
         }
 
+    }
+
+    errorClass = () => {
+        return(this.state.errors.length === 0 ? '' : 'c-error c-validation');
+     }
+
+    validate = (title, content) => {
+        const errors = this.state.errors;
+        if (title.length === 0) {
+            errors.push("Title can't be empty");
+        }
+
+        if (content.length < 5) {
+            errors.push("Content should be at least 15 charcters long");
+        }
+
+        return errors;
     }
 
     onChangeInput = (e) => {
@@ -22,14 +40,23 @@ class CreateProject extends Component {
 
     onSubmitForm = (e) => {
         e.preventDefault();
+
+        const { title, content } = this.state;
+
+        const errors = this.validate(title, content);
+        if (errors.length > 0) {
+            this.setState({ errors });
+            return;
+        }
+
         this.props.createrProject(this.state);
         this.props.history.push('/')
     }
 
     render() {
-        const {auth} = this.props
-        if(!auth.uid) return <Redirect to="/signin"/>
-        
+        const { auth } = this.props
+        if (!auth.uid) return <Redirect to="/signin" />
+
         return (
             <React.Fragment>
                 <div className="title">
@@ -41,9 +68,10 @@ class CreateProject extends Component {
                             <div className="card-content">
                                 <h4 className="card-title center-align">Create Project</h4>
                                 <form onSubmit={this.onSubmitForm}>
+
                                     <div className="row">
                                         <div className="input-field col s12">
-                                            <input type="text" placeholder='' id="title"  onChange={this.onChangeInput} />
+                                            <input type="text" placeholder='' id="title" onChange={this.onChangeInput} />
                                             <label htmlFor="title">Title</label>
                                         </div>
                                     </div>
@@ -53,9 +81,15 @@ class CreateProject extends Component {
                                             <label htmlFor="content">Content</label>
                                         </div>
                                     </div>
+                                    <div className={`${this.errorClass()} error`}>
+                                        {this.state.errors.map(error => (
+                                            <p key={error}>Error: {error}</p>
+                                        ))}
+                                    </div>
                                     <div className="row center-align">
                                         <button className="btn waves-effect waves-light" type="submit" name="action">Create <i className="material-icons right">send</i> </button>
                                     </div>
+
                                 </form>
                             </div>
                         </div>
@@ -67,14 +101,14 @@ class CreateProject extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return{
+    return {
         auth: state.firebase.auth
     }
 }
 const mapDispatchToProps = (dispatch) => {
-     return{
-         createrProject: (project) => dispatch(createrProject(project))
-     }
+    return {
+        createrProject: (project) => dispatch(createrProject(project))
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateProject)
