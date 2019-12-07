@@ -28,6 +28,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
     return createNotification(notification)
  })
 
+
  exports.userJoined = functions.auth.user().onCreate(
      user => {
          return admin.firestore().collection('users').doc(user.uid).get().then(

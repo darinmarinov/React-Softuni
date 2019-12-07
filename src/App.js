@@ -2,11 +2,13 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import './App.css';
 import Nabvar from '../src/components/layout/Navbar'
+import NotFoundPage from '../src/components/layout/NotFoundPage'
 import Dashboard from '../src/components/dashboard/Dashboard'
 import ProjecDetails from './components/projects/ProjectDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateProject from  './components/projects/CreateProject'
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
               <Route path='/SignIn' component={SignIn}/>
               <Route path='/SignUp' component={SignUp}/>
               <Route path='/CreateProject' component={CreateProject}/>
+              <Route path="*" component={NotFoundPage} />
             </Switch>
         </header>
       </div>

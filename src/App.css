@@ -1,96 +1,66 @@
-nav .brand-logo{margin: 0 30px;}
+nav .brand-logo {
+  margin: 0 30px;
+}
 
 .dashboard {
   margin-top: 20px !important;
 }
 
-.dashboard h2{
-  color: #0097a7 ;
+.dashboard h2 {
+  color: #0097a7;
   font: 700 3em 'Barlow Condensed', sans-serif;
   text-align: center;
 }
 
 .dashboard .card {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    background: transparent !important;
-}
-.dashboard .card::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    top:0;
-    right: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    transform: scaleY(0);
-    transform-origin: bottom center;
-    background: #f5f5f5 ;
-    z-index: -1;
-    transition: transform 0.3s;
-}
-.dashboard .card:hover::after {
-    transform: scaleY(1);
-    -webkit-transform: scaleY(1);
-    -moz-transform: scaleY(1);
-    -ms-transform: scaleY(1);
-    -o-transform: scaleY(1);
-}
-
-.dashboard .card span{padding: 0 5px;}
-
-.card-action{
-  color: #0097a7    ;
-  font: 400 1.2em 'Barlow Condensed', sans-serif;
-  text-transform: uppercase;
-}
-
-.card-action span{
-  color: #01579b    ;
-  font: 400 1.2em 'Barlow Condensed', sans-serif;
-}
-
-.notifications-list{
-  margin-top: 20px;
-   border: .07142857rem solid #cecfd5;
-   border-radius:5px;
-   -webkit-border-radius:5px;
-   -moz-border-radius:5px;
-   -ms-border-radius:5px;
-   -o-border-radius:5px;
-}
-
-.notifications-list .card-title, .card .card-content .card-title{
-  color: #0097a7 ;
-  font: 700 1.5em 'Barlow Condensed', sans-serif;
+  position: relative;
+  z-index: 1;
   text-align: center;
+  background: transparent !important;
+}
+
+.dashboard .card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: scaleY(0);
+  transform-origin: bottom center;
+  background: #f5f5f5;
+  z-index: -1;
+  transition: transform 0.3s;
+}
+
+.dashboard .card:hover::after {
+  transform: scaleY(1);
+  -webkit-transform: scaleY(1);
+  -moz-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  -o-transform: scaleY(1);
+}
+
+.dashboard .card span {
+  padding: 0 5px;
+}
+
+.card-action {
+  color: #0097a7;
+  font: 400 1.2em 'Barlow Condensed', sans-serif;
   text-transform: uppercase;
 }
 
-.item-user{
-  display: inline-block;
-  color: #0097a7  ;
-  font: 400 1.4em 'Barlow Condensed', sans-serif;
-}
-.item-content{
-  padding-left: 5px;
-  display: inline-block;
-  color: #01579b    ;
+.card-action span {
+  color: #01579b;
   font: 400 1.2em 'Barlow Condensed', sans-serif;
 }
-.item-date{
-  display: block;
-  color: #01579b   ;
-  font: 400 1em 'Barlow Condensed', sans-serif;
-}
 
-.notifications-list li{
-  width: 90%;
-  margin: 20px auto;
-  padding: 20px 10px;
-  background: #f5f5f5 ;
+.notifications-list {
+  margin-top: 20px;
+  border: .07142857rem solid #cecfd5;
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -98,64 +68,162 @@ nav .brand-logo{margin: 0 30px;}
   -o-border-radius: 5px;
 }
 
-.project-lists{
+.notifications-list .card-title,
+.card .card-content .card-title {
+  color: #0097a7;
+  font: 700 1.5em 'Barlow Condensed', sans-serif;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.item-user {
+  display: inline-block;
+  color: #0097a7;
+  font: 400 1.4em 'Barlow Condensed', sans-serif;
+}
+
+.item-content {
+  padding-left: 5px;
+  display: inline-block;
+  color: #01579b;
+  font: 400 1.2em 'Barlow Condensed', sans-serif;
+}
+
+.item-date {
+  display: block;
+  color: #01579b;
+  font: 400 1em 'Barlow Condensed', sans-serif;
+}
+
+.notifications-list li {
+  width: 90%;
+  margin: 20px auto;
+  padding: 20px 10px;
+  background: #f5f5f5;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+.project-lists {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
-.project-lists a{
+.project-lists a {
   display: inline-flex;
   margin: 10px;
   width: 45%;
   flex-direction: column;
 }
 
-.project-lists a .card{
+.project-lists a .card {
   height: 100%;
 }
 
-.project-details{text-align: center;}
+.project-details {
+  text-align: center;
+}
 
-.btn.waves-effect.waves-light{
+.btn.waves-effect.waves-light {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding:  0;
+  padding: 0;
   height: 45px;
   font-size: 1.3em;
 }
 
-.btn.waves-effect.waves-light i{font-size: 1.6rem;}
-
-.error{
-  height: 0;
-  -webkit-transition:all 1s ease;
-  -moz-transition:all 1s ease;
-   -ms-transition:all 1s ease;
-    -o-transition:all 1s ease;
-       transition:all 1s ease;
+.btn.waves-effect.waves-light i {
+  font-size: 1.6rem;
 }
 
-.error.c-validation{
+.error {
+  height: 0;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.error.c-validation {
   display: block !important;
   background: #c51244 !important;
   padding: 10px !important;
   border-radius: 0 !important;
-  position: relative; 
+  position: relative;
   height: 100%;
   box-shadow: 1px 1px 1px #aaaaaa;
   margin: 0 auto 20px !important;
-  color:#fff;
+  color: #fff;
   text-align: center;
   font-weight: 700;
 }
 
-.btn.waves-effect.waves-light{
+.btn.waves-effect.waves-light {
   margin: 0 auto;
   width: 100%;
-  max-width: 500px;}
+  max-width: 500px;
+}
 
-  .text-center{
-    text-align: center;
-  }
+.text-center {
+  text-align: center;
+}
+
+.page-not-found {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #121212;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-not-found .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  mix-blend-mode: overlay;
+}
+
+.page-not-found .code {
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 144px;
+  height: 100vh;
+  color: white;
+  width: 100%;
+  display: flex;
+  backgorund-position: center;
+  align-items: center;
+  background-size: cover;
+  justify-content: center;
+}
+
+.goHomeLink{
+  z-index: 10;
+  position: relative;
+  font-family: 'Alfa Slab One', cursive;
+  font-size: 100px;
+  height: 100vh;
+  color: white;
+  width: 100%;
+  display: flex;
+  backgorund-position: center;
+  align-items: center;
+  background-size: cover;
+  justify-content: center;
+}
+
+.goHomeLink:hover{
+  color:#0097a7;
+}
