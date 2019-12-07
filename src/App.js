@@ -8,6 +8,7 @@ import ProjecDetails from './components/projects/ProjectDetails'
 import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateProject from  './components/projects/CreateProject'
+import YoutubePage from './components/youtube/YoutubePage';
 
 
 function App() {
@@ -17,11 +18,12 @@ function App() {
         <header>
             <Nabvar></Nabvar>
             <Switch>
-              <Route path='/' exact component={Dashboard}/>
+              <Route path='/' exact component={YoutubePage}/>
               <Route path='/project/:id' component={ProjecDetails}/>
               <Route path='/SignIn' component={SignIn}/>
               <Route path='/SignUp' component={SignUp}/>
               <Route path='/CreateProject' component={CreateProject}/>
+              <Route path='/Dashboard' component={Dashboard}/>
               <Route path="*" component={NotFoundPage} />
             </Switch>
         </header>

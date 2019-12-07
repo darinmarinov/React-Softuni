@@ -58,6 +58,8 @@ nav .brand-logo {
   font: 400 1.2em 'Barlow Condensed', sans-serif;
 }
 
+.embed-responsive,
+.media-list,
 .notifications-list {
   margin-top: 20px;
   border: .07142857rem solid #cecfd5;
@@ -226,4 +228,100 @@ nav .brand-logo {
 
 .goHomeLink:hover{
   color:#0097a7;
+}
+
+.youtube{
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+}
+
+.input-group{
+  margin: 20px auto;
+}
+
+.form-control{max-width: 93%;}
+
+.youtube h2,.media-heading{
+  color: #0097a7;
+  font: 700 1.2em 'Barlow Condensed', sans-serif;
+  text-transform: uppercase; 
+}
+
+.media-heading{
+  margin: 0 0 20px !important;
+  border-bottom: 1px solid #01579b;
+}
+
+.youtube p{
+  padding: 0 30px 0 0;
+  color: #000;
+  font: 400 1em 'Barlow Condensed', sans-serif; 
+}
+
+.media-list, .embed-responsive{
+  padding: 20px 10px !important;
+  text-align: center;
+}
+
+.spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin: 5px auto;
+  width: 500px;
+  height: auto;
+  text-align: center;
+  font-size: 50px;
+  line-height: 0.5em;
+}
+
+.spinner > div {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  background-color:transparent;
+  height: 100%;
+  width: auto;
+  color: #0097a7;
+  font: 700 2em/0.5em 'Barlow Condensed', sans-serif;
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.6) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.6);
+  }  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
 }

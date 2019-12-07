@@ -10,8 +10,10 @@ import thunk from 'redux-thunk'
 import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from  'react-redux-firebase'
 import firebase from './firebase'
+import ReduxPromise from 'redux-promise';
 
-const store = createStore(
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+const store = createStoreWithMiddleware(
 	reducers,
 	compose(
 		applyMiddleware(

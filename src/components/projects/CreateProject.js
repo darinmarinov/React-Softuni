@@ -50,7 +50,7 @@ class CreateProject extends Component {
         }
 
         this.props.createrProject(this.state);
-        this.props.history.push('/')
+        this.props.history.push('/Dashboard')
     }
 
     render() {
