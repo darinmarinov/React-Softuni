@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Здравейте,
+Основната идея на този проект е да използвам повечко features от React и Redux,
+Главно съм наблегнал на използването на външни апита като това на Youtube за първа страница която е достъпна без аутентикация  
+и външна база данни като Firebase за менежиране на auth и данните към всеки потребител.
 
 ## Available Scripts
 
