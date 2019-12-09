@@ -1,20 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import ProjectSummary from './ProjectSummary'
 import { Link } from 'react-router-dom'
 
 const ProjectLists = ({ projects, id }) => {
 
-
   const [showProjects, setProjects] = useState(false);
 
-
- const render = () =>{
-      if(showProjects){
-        return(
-          <div className="row project-lists">
+  const render = () => {
+    if (showProjects) {
+      return (
+        <div className="row project-lists">
           {projects && projects.map(project => {
             if (project.authorId == id) {
-              console.log(project)
               return (
                 <Link to={'project/' + project.id} key={project.id} title="More Info">
                   <ProjectSummary project={project} />
@@ -24,11 +21,11 @@ const ProjectLists = ({ projects, id }) => {
           }
           )}
         </div>
-        )
-      }
-      else{
-        return(
-          <div className="row project-lists">
+      )
+    }
+    else {
+      return (
+        <div className="row project-lists">
           {projects && projects.map(project => {
             return (
               <Link to={'project/' + project.id} key={project.id} title="More Info">
@@ -37,14 +34,19 @@ const ProjectLists = ({ projects, id }) => {
             )
           })}
         </div>
-        )
-      }
+      )
+    }
   }
 
   return (
+
     <React.Fragment>
+
+
       <button className='btn waves-effect waves-light' onClick={() => setProjects(!showProjects)}>See only yours projects</button>
+
       {render()}
+
     </React.Fragment>
   )
 }
