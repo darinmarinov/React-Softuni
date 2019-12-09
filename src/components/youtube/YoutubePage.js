@@ -27,7 +27,6 @@ class YoutubePage extends Component {
     this.setState({selectedVideo})
   }
 
-
   render() {
    
     return (
