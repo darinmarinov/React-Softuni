@@ -12,15 +12,29 @@ class CreateProject extends Component {
             content: '',
             errors: [],
         }
-
     }
 
     errorClass = () => {
         return(this.state.errors.length === 0 ? '' : 'c-error c-validation');
      }
 
+     onSubmitForm = (e) => {
+        e.preventDefault();
+
+        const { title, content } = this.state;
+
+        const errors = this.validate(title, content);
+        if (errors.length > 0) {
+            this.setState({ errors });
+            return;
+        }
+
+        this.props.createrProject(this.state);
+        this.props.history.push('/Dashboard')
+    }
+
     validate = (title, content) => {
-        const errors = this.state.errors;
+        const errors = [];
         if (title.length === 0) {
             errors.push("Title can't be empty");
         }
@@ -38,23 +52,11 @@ class CreateProject extends Component {
         })
     }
 
-    onSubmitForm = (e) => {
-        e.preventDefault();
-
-        const { title, content } = this.state;
-
-        const errors = this.validate(title, content);
-        if (errors.length > 0) {
-            this.setState({ errors });
-            return;
-        }
-
-        this.props.createrProject(this.state);
-        this.props.history.push('/Dashboard')
-    }
 
     render() {
         const { auth } = this.props
+        const { errors } = this.state;
+
         if (!auth.uid) return <Redirect to="/signin" />
 
         return (
@@ -82,7 +84,7 @@ class CreateProject extends Component {
                                         </div>
                                     </div>
                                     <div className={`${this.errorClass()} error`}>
-                                        {this.state.errors.map(error => (
+                                        {errors.map(error => (
                                             <p key={error}>Error: {error}</p>
                                         ))}
                                     </div>

@@ -21,8 +21,29 @@ class SignUp extends Component {
         return (this.state.errors.length === 0 ? '' : 'c-error c-validation');
     }
 
+
+    onChangeInput = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value,
+        })
+    }
+
+    onSubmitForm = (e) => {
+        e.preventDefault();
+        const { firstName, lastName, email, password } = this.state;
+
+        const errors = this.validate(firstName, lastName, email, password);
+
+        if (errors.length > 0) {
+            this.setState({ errors });
+            return;
+        }
+
+        this.props.signUp(this.state)
+    }
+
     validate = (firstName, lastName, email, password) => {
-        const errors = this.state.errors;
+        const errors = [];
         if (firstName.length === 0) {
             errors.push("First Name can't be empty");
         }
@@ -48,30 +69,12 @@ class SignUp extends Component {
         return errors;
     }
 
-    onChangeInput = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value,
-        })
-    }
-
-    onSubmitForm = (e) => {
-        e.preventDefault();
-        const { firstName, lastName, email, password } = this.state;
-
-        const errors = this.validate(firstName, lastName, email, password);
-
-        if (errors.length > 0) {
-            this.setState({ errors });
-            return;
-        }
-
-        this.props.signUp(this.state)
-    }
-
     render() {
         const { auth, authError } = this.props;
+        const { errors } = this.state;
 
         if (auth.uid) return <Redirect to="/Dashboard" />
+        
         return (
             <React.Fragment>
                 <div className="row">
@@ -118,7 +121,7 @@ class SignUp extends Component {
                                         <button className="btn waves-effect waves-light" type="submit" name="action">Register <i className="material-icons right">send</i> </button>
                                     </div>
                                     <div className={`${this.errorClass()} error`}>
-                                        {this.state.errors.map(error => (
+                                        {errors.map(error => (
                                             <p key={error}>Error: {error}</p>
                                         ))}
                                     </div>

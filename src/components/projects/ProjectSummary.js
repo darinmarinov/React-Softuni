@@ -12,7 +12,7 @@ class ProjectSummary extends React.Component {
 
         return (
             <React.Fragment>
-                <button className="btn waves-effect waves-light" type="submit" name="action" onClick={(e) => deleteProject(e, project.id)}>Delete<i class="large material-icons">delete_forever</i></button>
+                <button className="btn waves-effect waves-light" type="submit" name="action" onClick={(e) => deleteProject(e, project.id)}>Delete<i className="large material-icons">delete_forever</i></button>
                 <div className="card grey lighten-4">
                     <div className="card-content black-text">
                         <span className="card-title">{project.title}</span>
