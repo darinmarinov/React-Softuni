@@ -9,7 +9,7 @@ import SignIn from './components/auth/SignIn'
 import SignUp from './components/auth/SignUp'
 import CreateProject from  './components/projects/CreateProject'
 import YoutubePage from './components/youtube/YoutubePage';
-
+import EditProject from './components/projects/EditProject'
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
             <Switch>
               <Route path='/' exact component={YoutubePage}/>
               <Route path='/project/:id' component={ProjecDetails}/>
+              <Route path='/edit/:id' component={EditProject}/>
               <Route path='/SignIn' component={SignIn}/>
               <Route path='/SignUp' component={SignUp}/>
               <Route path='/CreateProject' component={CreateProject}/>

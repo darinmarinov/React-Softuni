@@ -5,14 +5,10 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import { Link } from 'react-router-dom'
 
 export class Dashboard extends React.Component{
     
-   
-    
     render(){
-        console.log(this.props)
         const {projects, notifications, auth} = this.props
 
         if(!auth.uid) return <Redirect to="/signIn"/>
