@@ -15,24 +15,25 @@ class EditProject extends Component {
             content: '',
             authorFirstName: '',
             authorLastName: '',
-            createdAt: moment().toDate()
+            createdAt: moment().toDate(),
         };
 
     }
 
-
     onSubmit = (e) => {
         e.preventDefault();
         const { title, content } = this.state;
+    
         const updateRef = firebase.firestore().collection('projects').doc(this.props.match.params.id);
         console.log(updateRef)
         updateRef.update({
             title,
             content,
+            createdAt: new Date()
         }).then((docRef) => {
             this.setState({
                 key: '',
-                title: 'dddd',
+                title: '',
                 content: '',
             });
             this.props.history.push(`/dashboard`)
@@ -75,7 +76,7 @@ class EditProject extends Component {
     }
 
     render() {
-   
+        console.log(this.props)
         return (
             <div class="container">
                 <div class="panel panel-default">
