@@ -20,12 +20,34 @@ class EditProject extends Component {
 
     }
 
+
+    onSubmit = (e) => {
+        e.preventDefault();
+        const { title, content } = this.state;
+        const updateRef = firebase.firestore().collection('projects').doc(this.props.match.params.id);
+        console.log(updateRef)
+        updateRef.update({
+            title,
+            content,
+        }).then((docRef) => {
+            this.setState({
+                key: '',
+                title: 'dddd',
+                content: '',
+            });
+            this.props.history.push(`/dashboard`)
+        })
+            .catch((error) => {
+                console.error("Error adding document: ", error);
+            });
+    }
+
+
     componentDidMount() {
         const ref = firebase.firestore().collection('projects').doc(this.props.match.params.id);
  
         ref.get().then((doc) => {
             if (doc.exists) {
-            console.log(ref)
                 const projects = doc.data();
                 this.setState({
                     key: doc.id,
@@ -52,27 +74,6 @@ class EditProject extends Component {
         this.setState({ projects: state });
     }
 
-
-    onSubmit = (e) => {
-        e.preventDefault();
-        const { title, content } = this.state;
-        const updateRef = firebase.firestore().collection('projects').doc(this.props.match.params.id);
-        updateRef.set({
-            title,
-            content,
-        }).then((docRef) => {
-            this.setState({
-                key: '',
-                title: 'dddd',
-                content: '',
-            });
-            this.props.history.push(`/dashboard`)
-        })
-            .catch((error) => {
-                console.error("Error adding document: ", error);
-            });
-    }
-
     render() {
    
         return (
@@ -93,6 +94,18 @@ class EditProject extends Component {
                         <div class="form-group">
                             <label for="content">Content:</label>
                             <input type="text" class="form-control" name="content" value={this.state.content} onChange={this.onChange} placeholder="Content" />
+                        </div>
+                        <div class="form-group">
+                            <label for="content">authorFirstName:</label>
+                            <input type="text" class="form-control" name="authorFirstName" value={this.state.authorFirstName} onChange={this.onChange} placeholder="authorFirstName" />
+                        </div>
+                        <div class="form-group">
+                            <label for="content">authorLastName:</label>
+                            <input type="text" class="form-control" name="authorLastName" value={this.state.authorLastName} onChange={this.onChange} placeholder="authorLastName" />
+                        </div>
+                        <div class="form-group">
+                            <label for="content">createdAt:</label>
+                            <input type="text" class="form-control" name="createdAt" value={this.state.createdAt} onChange={this.onChange} placeholder="createdAt" />
                         </div>
                         <button type="submit" class="btn btn-success">Submit</button>
                     </form>
