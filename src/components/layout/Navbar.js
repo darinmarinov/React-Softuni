@@ -10,7 +10,7 @@ const Navbar = (props) => {
     return (
         <React.Fragment>
             <nav>
-                <div className='nav-wrapper  cyan darken-2'>
+                <div className='nav-wrapper'>
                     <div className='container'>
                         <Link to='/' className='brand-logo'>Logo</Link>
                         <ul id='nav-mobile' className='right hide-on-med-and-down'>

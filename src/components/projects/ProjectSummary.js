@@ -3,6 +3,7 @@ import moment from 'moment'
 import { connect } from 'react-redux'
 import { deleteProject } from '../../store/actions/projectActions'
 import { withRouter } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 class ProjectSummary extends React.Component {
 
@@ -22,9 +23,8 @@ class ProjectSummary extends React.Component {
                         <p> <span>Posted by: </span>{project.authorFirstName} {project.authorLastName}</p>
                         <p> <span>Posted at: </span>{moment(project.createdAt.toDate()).calendar()}</p>
                     </div>
-
                 </div>
-
+                <Link className="btn waves-effect waves-light"  to={'edit/' + project.id}  title="More Info">Edit</Link>
             </React.Fragment>
         )
     }
